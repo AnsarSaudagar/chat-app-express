@@ -1,5 +1,5 @@
 const UserService = require('../services/userService');
-
+const bcrypt = require('bcryptjs');
 const UserController = {
   getAllUsers: async (req, res) => {
     try {
@@ -28,7 +28,21 @@ const UserController = {
   createUser: async (req, res) => {
     
     try {
-      const newUser = await UserService.createUser(req.body);
+      // const body = req.body;
+      const salt = await bcrypt.genSalt(10);
+      const hasPassword = await bcrypt.hash(req.body.password, salt);
+
+      const body = {
+        firstName: req.body.firstName,
+        middleName: req.body.middleName,
+        lastName: req.body.lastName,
+        email: req.body.email,
+        passwordHash: hasPassword,
+      }
+
+      console.log(body);
+
+      const newUser = await UserService.createUser(body);
       res.json(newUser);
     } catch (error) {
       console.error(error.message);

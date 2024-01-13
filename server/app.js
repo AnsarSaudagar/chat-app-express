@@ -2,6 +2,7 @@
 var express = require('express');
 const { Sequelize } = require('sequelize');
 const users = require('./routes/users')
+const auth = require('./routes/auth')
 var bodyParser = require('body-parser')
 const app = express();
 
@@ -19,15 +20,12 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(bodyParser.json());
 
+//Users route
 app.use('/users', users);
-app.get('/', function (req, res) {
 
-    res.send({ check: 'Hello World Ansar' });
-})
-app.post('/', function (req, res) {
-    console.log(req.body);
-    // res.send({ check: 'Hello World Ansar' });
-})
+//authentication route
+app.use('/site', auth);
+
 const server = app.listen(8080, function () {
     console.log("Serverlistening at http://localhost:8080")
 })
