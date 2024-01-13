@@ -1,5 +1,7 @@
 const UserService = require('../services/userService');
 const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+const config = require('../config/config.json')
 const UserController = {
   getAllUsers: async (req, res) => {
     try {
@@ -26,7 +28,7 @@ const UserController = {
   },
 
   createUser: async (req, res) => {
-    
+
     try {
       // const body = req.body;
       const salt = await bcrypt.genSalt(10);
@@ -39,11 +41,19 @@ const UserController = {
         email: req.body.email,
         passwordHash: hasPassword,
       }
-
-      console.log(body);
+      // process.env.JWT_SECRET
 
       const newUser = await UserService.createUser(body);
-      res.json(newUser);
+
+      if (newUser) {
+        // create payload then Generate an access token
+        let payload = { id: newUser.id };
+        const token = jwt.sign(payload, config.secret_key);
+        res.status(200).send({ token })
+      }
+
+
+      // res.json(newUser);
     } catch (error) {
       console.error(error.message);
       res.status(500).send('Server Error');

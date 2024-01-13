@@ -9,6 +9,10 @@ const UserService = {
     return await User.findByPk(userId);
   },
 
+  getUserByEmail: async (email) => {
+    return await User.findOne({ where: { email } });
+  },
+
   createUser: async (body) => {
     return await User.create(body);
   },
