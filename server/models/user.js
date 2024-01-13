@@ -2,6 +2,8 @@
 const {
   Model
 } = require('sequelize');
+
+
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
     /**
@@ -14,11 +16,37 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   User.init({
-    username: DataTypes.STRING,
-    email: DataTypes.STRING
+    firstName: DataTypes.STRING,
+    middleName: DataTypes.STRING,
+    lastName: DataTypes.STRING,
+    email: {
+      type: DataTypes.STRING,
+      validate: {
+        isEmail: true
+      }
+    },
+    createdAt: DataTypes.DATE,
+    updatedAt: DataTypes.DATE,
   }, {
     sequelize,
     modelName: 'User',
-  });
+  },
+    // {
+    //   hooks: {
+    //     beforeCreate: async (user, options) => {
+    //       extendSequelize([User], {
+    //         createdBy: enhanceCreatedBy(),
+    //       });
+    //       console.log(options);
+    //       // user.createdBy = user.updatedBy = (await sequelize.query('SELECT CURRENT_USER'))[0].CURRENT_USER;
+    //     },
+    //     beforeUpdate: async (user) => {
+    //       user.updatedBy = (await sequelize.query('SELECT CURRENT_USER'))[0].CURRENT_USER;
+    //     }
+    //   }
+    // }
+  );
+
+
   return User;
 };

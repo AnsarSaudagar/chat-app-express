@@ -26,13 +26,9 @@ const UserController = {
   },
 
   createUser: async (req, res) => {
-
-    const { username, email } = {
-        username: "Ansar",
-        email: "ansar@mail.com"
-    };
+    
     try {
-      const newUser = await UserService.createUser(username, email);
+      const newUser = await UserService.createUser(req.body);
       res.json(newUser);
     } catch (error) {
       console.error(error.message);

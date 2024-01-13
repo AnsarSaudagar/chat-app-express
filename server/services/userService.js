@@ -9,8 +9,8 @@ const UserService = {
     return await User.findByPk(userId);
   },
 
-  createUser: async (username, email) => {
-    return await User.create({ username, email });
+  createUser: async (body) => {
+    return await User.create(body);
   },
 
   updateUser: async (userId, username, email) => {

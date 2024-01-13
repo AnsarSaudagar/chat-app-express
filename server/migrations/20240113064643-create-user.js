@@ -9,11 +9,26 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      username: {
+      firstName: {
+        type: Sequelize.STRING,
+        unique: true,
+        allowNull: false,
+      },
+      middleName: {
+        type: Sequelize.STRING
+      },
+      lastName: {
         type: Sequelize.STRING
       },
       email: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        unique: true,
+        allowNull: false,
+      },
+      passwordHash: {
+        type: Sequelize.STRING,
+        unique: true,
+        allowNull: false,
       },
       createdAt: {
         allowNull: false,
@@ -21,8 +36,16 @@ module.exports = {
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE
-      }
+        type: Sequelize.DATE,
+      },
+      // createdBy: {
+      //   type: Sequelize.INTEGER,
+      //   references: { model: 'Users', key: 'id' }
+      // },
+      // updatedBy: {
+      //   type: Sequelize.INTEGER,
+      //   references: { model: 'Users', key: 'id' }
+      // },
     });
   },
   async down(queryInterface, Sequelize) {
