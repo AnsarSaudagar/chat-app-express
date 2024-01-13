@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "chat-app-node",
+    "password": "403769",
+    "database": "chat-app-node",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": "chat-app-node",
+    "password": "403769",
+    "database": "chat-app-node",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "chat-app-node",
+    "password": "403769",
+    "database": "chat-app-node",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  }
+}
