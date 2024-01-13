@@ -1,12 +1,35 @@
 <div class="w-screen h-screen flex justify-center items-center">
-    <div class="auth-card border-2 bg-slate-50 border-gray-300 h-2/3 w-1/3 rounded-xl relative">
+    <div class="auth-card  bg-slate-50  min-h-2/3 h-[400px] w-1/3 rounded-xl relative">
         <div class="hello-img h-[80%] w-[60%] absolute top-0 right-[80%] z-0">
             <img src="../../assets/images/hello-male.png" alt="">
         </div>
         <div class="hello-img h-[80%] w-[60%] absolute top-0 left-[80%] z-0">
             <img src="../../assets/images/hello-female.png" alt="">
         </div>
-        <div class="form-card h-full w-full bg-slate-50 z-20 relative rounded-xl">
+        <div class="form-card border-2 border-gray-300 min-h-[98%] w-[full] bg-slate-50 z-20 relative rounded-xl">
+            <div class="card-top mt-2 ml-2 relative">
+                <div class="login w-fit flex items-center cursor-pointer">
+                    <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="arrow_back"></mat-icon>
+                    <p class="text-base font-semibold ml-1">Login</p>
+                </div>
+                <div class="signup w-fit cursor-pointer flex items-center absolute right-0 top-0">
+                    <p class="text-base font-semibold ml-1">Register</p>
+                    <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="arrow_forward"></mat-icon>
+                </div>
+            </div>
+            <div class="logo-desc">
+                <div class="logo h-24 w-28 m-auto">
+                    <img src="../../assets/images/temp-logo.png" alt="">
+                </div>
+                <p class="text-center mt-4 font-bold text-4xl">Login</p>
+                <p class="mt-4 ml-4 mr-4 text-center text-sm text-[#717171]">Lorem, ipsum dolor sit amet consectetur
+                    adipisicing elit.
+                    Incidunt,
+                    dolore asdfdasfsfdasfdasdf.</p>
+            </div>
+            <div>
+                <router-outlet></router-outlet>
+            </div>
 
         </div>
     </div>
