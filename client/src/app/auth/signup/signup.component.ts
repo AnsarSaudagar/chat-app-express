@@ -22,19 +22,21 @@ export class SignupComponent {
       'password': new FormControl(null, [Validators.required])
     })
   }
+
   onSubmit() {
-    this.authService.signup(this.signupForm.value).subscribe(
-      {
-        next: (user)=>{
-          console.log("Successfully signup");
-          console.log(user);
-          
-        },
-        error(err) {
-            console.log("Error");
-            console.log(err);
-        },
-      }
-    )
+    if(this.signupForm.valid){
+      this.authService.signup(this.signupForm.value).subscribe(
+        {
+          next: (user)=>{
+            console.log("Successfully signup");
+            console.log(user);
+          },
+          error(err) {
+              console.log("Error");
+              console.log(err);
+          },
+        }
+      )
+    }
   }
 }
