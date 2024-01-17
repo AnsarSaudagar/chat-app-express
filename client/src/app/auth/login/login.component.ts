@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
             console.log("Succesfully Logged In");
             console.log(value.token);
   
-            this.authService.setSession(value.token);
+            this.authService.setSession(value.token, this.loginForm.value.email);
           },
           error(err) {
             console.log("error");

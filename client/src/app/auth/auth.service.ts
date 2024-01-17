@@ -19,10 +19,12 @@ export class AuthService {
 
   logout(){
     localStorage.removeItem('token');
+    localStorage.removeItem('email');
   }
 
-  setSession(token: string){
+  setSession(token: string, email: string){
     localStorage.setItem('token', token);
+    localStorage.setItem('email', email);
   }
 
   
