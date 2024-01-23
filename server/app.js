@@ -5,6 +5,9 @@ const users = require('./routes/users')
 const auth = require('./routes/auth')
 var bodyParser = require('body-parser')
 const app = express();
+var cors = require('cors');
+
+app.use(cors());
 
 const sequelize = new Sequelize({
     dialect: 'mysql',
