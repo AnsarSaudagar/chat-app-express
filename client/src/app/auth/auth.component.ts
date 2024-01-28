@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthService } from './auth.service';
 import { MatIconModule } from '@angular/material/icon';
-import { RouterOutlet } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 
 @Component({
@@ -13,6 +13,16 @@ import { HttpClientModule } from '@angular/common/http';
   styleUrl: './auth.component.css'
 })
 export class AuthComponent {
-  constructor(private authService: AuthService) { }
+  constructor(
+    private authService: AuthService,
+    private router: Router
+    ) { }
 
+  goToSignup(){
+    this.router.navigate(['/auth/signup']);
+  }
+  goToLogin(){
+    this.router.navigate(['/auth/login']);
+
+  }
 }

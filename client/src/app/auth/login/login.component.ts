@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthService } from '../auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,9 @@ export class LoginComponent implements OnInit {
 
   loginForm !: FormGroup;
 
-  constructor(private authService: AuthService) { }
+  constructor(
+    private authService: AuthService,
+    private router: Router) { }
 
   ngOnInit() {
     this.loginForm = new FormGroup({
@@ -23,19 +26,21 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
-    if(this.loginForm.valid){
+    if (this.loginForm.valid) {
       this.authService.login(this.loginForm.value).subscribe(
         {
           next: (value: any) => {
             console.log("Succesfully Logged In");
             console.log(value.token);
-  
+
             this.authService.setSession(value.token, this.loginForm.value.email);
+            this.router.navigate(['/home']);
+
           },
           error(err) {
             console.log("error");
             console.log(err);
-  
+
           },
         }
       )

@@ -9,10 +9,16 @@ export const routes: Routes = [
         path: 'auth', component: AuthComponent,
         children: [
             { path: 'login', component: LoginComponent },
-            { path: 'signup', component: SignupComponent }
+            { path: 'signup', component: SignupComponent },
+            { path: '', redirectTo: 'login', pathMatch: 'full' },
         ]
     },
     {
         path: 'home', component: HomeComponent
-    }
+    },
+
+    { path: '', redirectTo: '/auth', pathMatch: 'full' },
+
+    //For invalid route
+    // { path: '**', redirectTo: '/home' }
 ];

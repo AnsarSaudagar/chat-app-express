@@ -10,10 +10,10 @@
             <div class="card-top mt-2 ml-2 relative">
                 <div class="login w-fit flex items-center cursor-pointer">
                     <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="arrow_back"></mat-icon>
-                    <p class="text-base font-semibold ml-1">Login</p>
+                    <p class="text-base font-semibold ml-1" (click)="goToLogin()">Login</p>
                 </div>
                 <div class="signup w-fit cursor-pointer flex items-center absolute right-0 top-0">
-                    <p class="text-base font-semibold ml-1">Register</p>
+                    <p class="text-base font-semibold ml-1" (click)="goToSignup()">Register</p>
                     <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="arrow_forward"></mat-icon>
                 </div>
             </div>
