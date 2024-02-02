@@ -4,7 +4,7 @@ const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class Message extends Model {
     static associate(models) {
-      Message.belongsTo(models.Conversation, { foreignKey: 'conversation_id' });
+      Message.belongsTo(models.Conversations, { foreignKey: 'conversation_id' });
       Message.belongsTo(models.User, { foreignKey: 'sender_id' });
     }
   }
