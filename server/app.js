@@ -4,6 +4,8 @@ const { Sequelize } = require('sequelize');
 const users = require('./routes/users')
 const auth = require('./routes/auth')
 const conversationsRoutes = require('./routes/conversationsRoutes');
+const usersConversationsRoutes = require('./routes/usersConversationsRoutes');
+
 
 var bodyParser = require('body-parser')
 const app = express();
@@ -33,6 +35,10 @@ app.use('/site', auth);
 
 //conversations route
 app.use('/conversations', conversationsRoutes);
+
+//For userConversations route
+app.use('/users-conversations', usersConversationsRoutes);
+
 
 const server = app.listen(8080, function () {
     console.log("Serverlistening at http://localhost:8080")
