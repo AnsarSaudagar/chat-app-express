@@ -3,6 +3,8 @@ var express = require('express');
 const { Sequelize } = require('sequelize');
 const users = require('./routes/users')
 const auth = require('./routes/auth')
+const conversationsRoutes = require('./routes/conversationsRoutes');
+
 var bodyParser = require('body-parser')
 const app = express();
 var cors = require('cors');
@@ -28,6 +30,9 @@ app.use('/users', users);
 
 //authentication route
 app.use('/site', auth);
+
+//conversations route
+app.use('/conversations', conversationsRoutes);
 
 const server = app.listen(8080, function () {
     console.log("Serverlistening at http://localhost:8080")
