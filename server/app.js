@@ -6,6 +6,7 @@ const auth = require('./routes/auth')
 const conversationsRoutes = require('./routes/conversationsRoutes');
 const usersConversationsRoutes = require('./routes/usersConversationsRoutes');
 const messageRoutes = require('./routes/messageRoutes');
+const commonRoutes = require('./routes/commonRoutes')
 
 var bodyParser = require('body-parser')
 const app = express();
@@ -41,6 +42,9 @@ app.use('/users-conversations', usersConversationsRoutes);
 
 //For messages routes
 app.use('/messages', messageRoutes);
+
+//For common
+app.use('/common', commonRoutes)
 
 const server = app.listen(8080, function () {
     console.log("Serverlistening at http://localhost:8080")
