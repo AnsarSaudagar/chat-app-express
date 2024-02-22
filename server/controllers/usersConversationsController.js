@@ -12,9 +12,9 @@ class UsersConversationsController {
     }
   }
 
-  static async getAllUserConversations(req, res){
+  static async getAllUserConversations(req, res) {
     try {
-    const userConversation = await UsersConversationsService.getAllUserConversations();
+      const userConversation = await UsersConversationsService.getAllUserConversations();
       res.status(201).json(userConversation);
     } catch (error) {
       res.status(500).json({ error: error.message });
@@ -49,6 +49,16 @@ class UsersConversationsController {
       const { id } = req.params;
       await UsersConversationsService.deleteUserConversation(id);
       res.sendStatus(204);
+    } catch (error) {
+      res.status(500).json({ error: error.message });
+    }
+  }
+
+  static async getCurrentUserConversations(req, res) {
+    try {
+      const { id } = req.params;
+      const userConversation = await UsersConversationsService.getCurrentUserConversations(id);
+      res.status(201).json(userConversation);
     } catch (error) {
       res.status(500).json({ error: error.message });
     }

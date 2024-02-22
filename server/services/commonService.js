@@ -38,6 +38,8 @@ class commonService {
         }
 
     }
+
+    
 }
 
 module.exports = commonService;
